@@ -182,13 +182,13 @@ mem_bytes(){
 mem_task(){
 	wait_stress
 	mem_bytes $MEM
-	systemd-run --scope -p CPUQuota=50% stress-ng --vm 1 --vm-keep --vm-bytes ${MEMK}k --timeout 59
+	sudo systemd-run --scope -p CPUQuota=50% stress-ng --vm 1 --vm-keep --vm-bytes ${MEMK}k --timeout 59
 }
 
 cpu_mem_task(){
 	wait_stress
 	mem_bytes $MEM
-	systemd-run --scope -p CPUQuota=$((CPU * $(getconf _NPROCESSORS_ONLN)))% stress-ng --cpu $(getconf _NPROCESSORS_ONLN) --vm 1 --vm-keep --vm-bytes ${MEMK}k --timeout 59
+	sudo systemd-run --scope -p CPUQuota=$((CPU * $(getconf _NPROCESSORS_ONLN)))% stress-ng --cpu $(getconf _NPROCESSORS_ONLN) --vm 1 --vm-keep --vm-bytes ${MEMK}k --timeout 59
 }
 
 # Start from here
