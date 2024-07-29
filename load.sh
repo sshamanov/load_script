@@ -5,7 +5,7 @@
 SETTINGS=$HOME/.config/load.env
 SCRIPT=$HOME/bin/load.sh
 URL="https://raw.githubusercontent.com/sshamanov/load_script/main/load.sh"
-OPTIONS='Please run with $0 install [-c|--cpu 0-100] [-m|--mem 0-100] [-d|--hdd 0-100]'
+OPTIONS="Please run with $0 install [-c|--cpu 0-100] [-m|--mem 0-100] [-d|--hdd 0-100]"
 HDDPATH="$HOME/temp-hdd-load"
 
 #Functions
