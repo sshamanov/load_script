@@ -153,9 +153,15 @@ hdd_task(){
 	done
 }
 
+wait_stress(){
+	while pgrep stress-ng > /dev/null ; do
+		sleep 1
+	done
+}
+
 cpu_task(){
-	killall -9 stress-ng
-	stress-ng --cpu $(getconf _NPROCESSORS_ONLN) --cpu-load $CPU --timeout 60
+	wait_stress
+	stress-ng --cpu $(getconf _NPROCESSORS_ONLN) --cpu-load $CPU --timeout 59
 }
 
 mem_bytes(){
@@ -166,15 +172,15 @@ mem_bytes(){
 }
 
 mem_task(){
-	killall -9 stress-ng
+	wait_stress
 	mem_bytes $MEM
-	systemd-run --scope -p CPUQuota=50% stress-ng --vm 1 --vm-keep --vm-bytes ${MEMK}k --timeout 60
+	systemd-run --scope -p CPUQuota=50% stress-ng --vm 1 --vm-keep --vm-bytes ${MEMK}k --timeout 59
 }
 
 cpu_mem_task(){
-	killall -9 stress-ng
+	wait_stress
 	mem_bytes $MEM
-	systemd-run --scope -p CPUQuota=$((CPU * $(getconf _NPROCESSORS_ONLN)))% stress-ng --cpu $(getconf _NPROCESSORS_ONLN) --vm 1 --vm-keep --vm-bytes ${MEMK}k --timeout 60
+	systemd-run --scope -p CPUQuota=$((CPU * $(getconf _NPROCESSORS_ONLN)))% stress-ng --cpu $(getconf _NPROCESSORS_ONLN) --vm 1 --vm-keep --vm-bytes ${MEMK}k --timeout 59
 }
 
 # Start from here
