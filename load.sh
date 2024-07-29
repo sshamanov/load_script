@@ -106,7 +106,14 @@ rund_val()
 
 run()
 {
-	echo "Load settings..."
+	if [ ! -f $SETTINGS ] ; then
+		echo "First run."
+		echo "Empty config!"
+		echo $OPTIONS
+		exit 1
+	fi
+ 	
+  	echo "Load settings..."
 	. $SETTINGS
 
 	rund_val $HDD0 $HDD1
@@ -184,15 +191,6 @@ cpu_mem_task(){
 }
 
 # Start from here
-
-if [ ! -f $SETTINGS ] ; then
-	echo "First run."
-	echo "Empty config!"
-	echo $OPTIONS
-	exit 1
-fi
-
-# Commands
 
 case $1 in
 	install)
