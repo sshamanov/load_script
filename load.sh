@@ -68,6 +68,7 @@ parse_settings()
 
 save_settings()
 {
+	mkdir -p $HOME/.config
 	cat <<EOF > $SETTINGS
 CPU0=$CPU0
 CPU1=$CPU1
