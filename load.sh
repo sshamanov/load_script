@@ -83,6 +83,7 @@ install_script()
 	which wget > /dev/null || ( sudo apt update ; sudo apt -y wget )
 	mkdir -p $HOME/bin
 	wget $URL -O $SCRIPT
+ 	chmod +x $SCRIPT
 }
 
 # Start from here
