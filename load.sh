@@ -175,7 +175,7 @@ cpu_task(){
 mem_bytes(){
 	MEM=$1
 	MEMK=$(((( $(free|grep ^Mem|awk '{print$2}') * MEM ) / 100 ) - $(free|grep ^Mem|awk '{print$3}')))
-	test $MEMK -lt 0 && MEMK=0
+	test $MEMK -lt 0 && MEMK=4
 	echo $MEM $MEMK
 }
 
