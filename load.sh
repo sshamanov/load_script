@@ -91,7 +91,7 @@ install_script()
 	which stress-ng > /dev/null || ( sudo apt update ; sudo apt -y install stress-ng )
 	which wget > /dev/null || ( sudo apt update ; sudo apt -y wget )
 	mkdir -p $HOME/bin
-	test -x $SCRIPT || wget $URL -O $SCRIPT
+	test -x $SCRIPT || ( wget $URL -O $SCRIPT ; chmod +x $SCRIPT )
 }
 
 rund_val()
