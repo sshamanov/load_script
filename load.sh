@@ -4,7 +4,7 @@
 
 SETTINGS=$HOME/.config/load.env
 SCRIPT=$HOME/bin/load.sh
-URL="https://gist.githubusercontent.com/sshamanov/db385e34e61ca90b67f07497b036cc8b/raw/8319af598d7b4b69c000038300876ca5907472c7/load.sh"
+URL="https://raw.githubusercontent.com/sshamanov/load_script/main/load.sh"
 
 #Functions
 
