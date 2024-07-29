@@ -120,22 +120,27 @@ run()
 
 	if [ ! -z $HDD ] ; then
 		echo "Starting HDD load with $HDD%..."
+		systemd-cat -t load.sh echo "Starting HDD load with $HDD%..."
 		hdd_task &
 	fi
 
 	if [ ! -z $CPU ] && [ -z $MEM ] ; then
                 echo "Starting CPU load with $CPU%..."
+                systemd-cat -t load.sh echo "Starting CPU load with $CPU%..."
 		cpu_task &
         fi
 
         if [ ! -z $MEM ] && [ -z $CPU ] ; then
                 echo "Starting MEM load with $MEM%..."
+                systemd-cat -t load.sh echo "Starting MEM load with $MEM%..."
 		mem_task &
         fi
 
         if [ ! -z $CPU ] && [ ! -z $MEM ] ; then
                 echo "Starting CPU load with $CPU%..."
                 echo "Starting MEM load with $MEM%..."
+                systemd-cat -t load.sh echo "Starting CPU load with $CPU%..."
+                systemd-cat -t load.sh echo "Starting MEM load with $MEM%..."
 		cpu_mem_task &
         fi
 }
